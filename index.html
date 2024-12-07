@@ -6,19 +6,26 @@
     <title>Apache HTTP Server</title>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <style>
         body {
-            font-family: 'Ubuntu', serif;
+            font-family: 'Ubuntu', sans-serif;
             scroll-behavior: smooth;
         }
         .navbar {
-            background-color: #343a40;
+            background: linear-gradient(45deg, #343a40, #212529);
             position: sticky;
             top: 0;
             z-index: 1000;
         }
         .navbar-brand, .nav-link {
             color: #ffffff !important;
+        }
+        .hero-section {
+            background: url('https://via.placeholder.com/1500x500') no-repeat center center/cover;
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
         }
         .section-title {
             margin-top: 40px;
@@ -31,6 +38,14 @@
             padding: 20px;
             border-radius: 5px;
             overflow-x: auto;
+        }
+        .footer {
+            background-color: #343a40;
+            color: white;
+            padding: 20px 0;
+        }
+        .footer a {
+            color: #f8f9fa;
         }
     </style>
 </head>
@@ -58,28 +73,46 @@
         <h1 class="text-center">Apache HTTP Server</h1>
 
         <!-- Introducción -->
-        <section id="introduccion" class="mt-5">
-            <h2 class="section-title">Introducción</h2>
-            <h3>¿Qué es Apache?</h3>
-            <p>Apache HTTP Server es un software de servidor web gratuito y de código abierto que permite a los desarrolladores alojar aplicaciones y sitios web. Es una de las tecnologías más utilizadas en el mundo por su estabilidad y flexibilidad.</p>
-            <ul>
-                <li><strong>Historia:</strong>
-                    <ul>
-                        <li>Fue lanzado en 1995 por el Apache Software Foundation.</li>
-                        <li>El nombre "Apache" rinde homenaje a la tribu nativa americana Apache, conocida por su resistencia.</li>
-                    </ul>
-                </li>
-                <li><strong>Características principales:</strong>
-                    <ul>
-                        <li>Soporte para múltiples lenguajes de programación como PHP, Python y Perl.</li>
-                        <li>Modularidad: se puede personalizar fácilmente mediante módulos como <code>mod_rewrite</code> y <code>mod_ssl</code>.</li>
-                        <li>Compatibilidad con HTTP/2 y HTTP/3.</li>
-                        <li>Seguridad avanzada con certificados SSL/TLS.</li>
-                        <li>Amplio soporte de la comunidad y actualizaciones regulares.</li>
-                    </ul>
-                </li>
-            </ul>
-        </section>
+<section id="introduccion" class="mt-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h2 class="section-title text-primary">Introducción</h2>
+                <h3 class="text-dark">¿Qué es Apache?</h3>
+                <p class="lead">
+                    Apache HTTP Server es un software de servidor web gratuito y de código abierto, diseñado para alojar aplicaciones y sitios web de manera estable y flexible. Desde su lanzamiento en 1995, se ha convertido en una de las tecnologías más confiables en el mundo del desarrollo web.
+                </p>
+                <ul class="list-group mb-3">
+                    <li class="list-group-item">
+                        <strong>Historia:</strong>
+                        <ul>
+                            <li>Creado en 1995 por la Apache Software Foundation.</li>
+                            <li>El nombre "Apache" honra a la tribu nativa americana conocida por su resistencia y adaptabilidad.</li>
+                        </ul>
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Características principales:</strong>
+                        <ul>
+                            <li>Compatibilidad con múltiples lenguajes como PHP, Python y Perl.</li>
+                            <li>Arquitectura modular: módulos como <code>mod_rewrite</code>, <code>mod_ssl</code>, y más.</li>
+                            <li>Compatibilidad con los estándares modernos: HTTP/2 y HTTP/3.</li>
+                            <li>Seguridad avanzada: Soporte completo para certificados SSL/TLS.</li>
+                            <li>Respaldo por una amplia comunidad y actualizaciones constantes.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-6 text-center">
+                <img src="img/Apache-emblema.jpg" class="img-fluid rounded shadow" alt="Servidor Apache">
+                <p class="text-muted mt-3">Figura 1: Apache, el servidor web líder en el mercado.</p>
+            </div>
+        </div>
+        <div class="alert alert-info mt-4">
+            <strong>¿Sabías que?</strong> Apache es utilizado por empresas líderes en tecnología y es compatible con sistemas operativos como Linux, Windows y macOS.
+        </div>
+    </div>
+</section>
+
 
         <!-- Estructura del Servidor Apache -->
         <section id="estructura" class="mt-5">
@@ -221,42 +254,134 @@
             </table>
         </section>
 
-        <!-- Bloques Importantes -->
-        <section id="bloques" class="mt-5">
-            <h2 class="section-title">Bloques Importantes</h2>
-            <h3>&lt;Directory&gt;</h3>
-            <p>Define permisos y configuraciones para un directorio específico.</p>
-            <div class="code-block">
-                <pre><code>&lt;Directory /var/www/html&gt;
+<!-- Bloques Importantes -->
+<section id="bloques" class="mt-5">
+    <div class="container">
+        <h2 class="section-title text-primary text-center mb-5">Bloques Importantes</h2>
+        <div class="row g-4">
+            <!-- Bloque Directory -->
+            <div class="col-md-4">
+                <div class="card shadow">
+                    <div class="card-header bg-primary text-white text-center">
+                        <h3 class="h5 mb-0">&lt;Directory&gt;</h3>
+                    </div>
+                    <div class="card-body text-center">
+                        <p>Define configuraciones específicas para un directorio.</p>
+                        <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalDirectory">
+                            Ver más
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bloque Files -->
+            <div class="col-md-4">
+                <div class="card shadow">
+                    <div class="card-header bg-success text-white text-center">
+                        <h3 class="h5 mb-0">&lt;Files&gt;</h3>
+                    </div>
+                    <div class="card-body text-center">
+                        <p>Configura reglas específicas para archivos individuales.</p>
+                        <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#modalFiles">
+                            Ver más
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bloque VirtualHost -->
+            <div class="col-md-4">
+                <div class="card shadow">
+                    <div class="card-header bg-danger text-white text-center">
+                        <h3 class="h5 mb-0">&lt;VirtualHost&gt;</h3>
+                    </div>
+                    <div class="card-body text-center">
+                        <p>Permite alojar múltiples sitios en el mismo servidor.</p>
+                        <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalVirtualHost">
+                            Ver más
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Directory -->
+    <div class="modal fade" id="modalDirectory" tabindex="-1" aria-labelledby="modalDirectoryLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="modalDirectoryLabel">&lt;Directory&gt;</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <p>El bloque <code>&lt;Directory&gt;</code> define configuraciones específicas para un directorio en el servidor.</p>
+                    <pre class="bg-light p-3 rounded"><code>&lt;Directory /var/www/html&gt;
     Options Indexes FollowSymLinks
     AllowOverride None
     Require all granted
 &lt;/Directory&gt;
-                </code></pre>
+                    </code></pre>
+                    <ul>
+                        <li><strong>Opciones comunes:</strong> <code>Indexes</code>, <code>FollowSymLinks</code>, <code>ExecCGI</code>.</li>
+                        <li><strong>Directiva AllowOverride:</strong> Controla el uso de archivos <code>.htaccess</code>.</li>
+                    </ul>
+                </div>
             </div>
+        </div>
+    </div>
 
-            <h3>&lt;Files&gt;</h3>
-            <p>Configura reglas específicas para un archivo.</p>
-            <div class="code-block">
-                <pre><code>&lt;Files "config.php"&gt;
+    <!-- Modal Files -->
+    <div class="modal fade" id="modalFiles" tabindex="-1" aria-labelledby="modalFilesLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="modalFilesLabel">&lt;Files&gt;</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <p>El bloque <code>&lt;Files&gt;</code> permite establecer configuraciones específicas para archivos individuales.</p>
+                    <pre class="bg-light p-3 rounded"><code>&lt;Files "config.php"&gt;
     Require all denied
 &lt;/Files&gt;
-                </code></pre>
+                    </code></pre>
+                    <ul>
+                        <li>Protección de archivos sensibles, como <code>config.php</code> o <code>.htaccess</code>.</li>
+                        <li>Uso de comodines y expresiones regulares para coincidencias avanzadas.</li>
+                    </ul>
+                </div>
             </div>
+        </div>
+    </div>
 
-            <h3>&lt;VirtualHost&gt;</h3>
-            <p>Se utiliza para configurar múltiples sitios en el mismo servidor.</p>
-            <div class="code-block">
-                <pre><code>&lt;VirtualHost *:443&gt;
+    <!-- Modal VirtualHost -->
+    <div class="modal fade" id="modalVirtualHost" tabindex="-1" aria-labelledby="modalVirtualHostLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title" id="modalVirtualHostLabel">&lt;VirtualHost&gt;</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <p>El bloque <code>&lt;VirtualHost&gt;</code> permite alojar múltiples sitios web en el mismo servidor.</p>
+                    <pre class="bg-light p-3 rounded"><code>&lt;VirtualHost *:443&gt;
     ServerName secure.miweb.com
-    DocumentRoot /var/www/secure
     SSLEngine on
     SSLCertificateFile /path/to/cert.pem
     SSLCertificateKeyFile /path/to/key.pem
 &lt;/VirtualHost&gt;
-                </code></pre>
+                    </code></pre>
+                    <ul>
+                        <li>Define dominios con <code>ServerName</code> y alias con <code>ServerAlias</code>.</li>
+                        <li>Permite configuración de SSL y redirección HTTP a HTTPS.</li>
+                    </ul>
+                </div>
             </div>
-        </section>
+        </div>
+    </div>
+</section>
+
+
 
         <!-- Esquema de Logs -->
         <section id="logs" class="mt-5">
@@ -280,32 +405,97 @@
         </section>
 
         <!-- Seguridad en Apache -->
-        <section id="seguridad" class="mt-5">
-            <h2 class="section-title">Seguridad en Apache</h2>
-            <ol>
-                <li><strong>Activar HTTPS:</strong>
-                    <p>Usa el módulo <code>mod_ssl</code> y genera un certificado.</p>
-                    <div class="code-block">
-                        <pre><code>sudo a2enmod ssl
+<section id="seguridad" class="mt-5">
+    <h2 class="section-title">Seguridad en Apache</h2>
+    <p>Garantizar la seguridad en Apache es fundamental para proteger el servidor y los datos que maneja. Aquí tienes las prácticas recomendadas:</p>
+    <ol>
+        <li><strong>Activar HTTPS:</strong>
+            <p>Configura HTTPS para asegurar la comunicación entre el cliente y el servidor.</p>
+            <div class="code-block">
+                <pre><code># Habilita el módulo SSL y reinicia Apache
+sudo a2enmod ssl
 sudo systemctl restart apache2
-                        </code></pre>
-                    </div>
-                </li>
-                <li><strong>Deshabilitar Listado de Directorios:</strong>
-                    <div class="code-block">
-                        <pre><code>Options -Indexes</code></pre>
-                    </div>
-                </li>
-                <li><strong>Restricción de Acceso:</strong>
-                    <div class="code-block">
-                        <pre><code>&lt;Directory /admin&gt;
+
+# Genera un certificado autofirmado (para pruebas)
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/apache-selfsigned.key -out /etc/ssl/certs/apache-selfsigned.crt
+
+# Configura HTTPS en el archivo de configuración de tu sitio (ejemplo: /etc/apache2/sites-available/000-default.conf)
+&lt;VirtualHost *:443&gt;
+    ServerName ejemplo.com
+    SSLEngine on
+    SSLCertificateFile /etc/ssl/certs/apache-selfsigned.crt
+    SSLCertificateKeyFile /etc/ssl/private/apache-selfsigned.key
+&lt;/VirtualHost&gt;
+                </code></pre>
+            </div>
+            <p>Se recomienda obtener certificados válidos de autoridades como <a href="https://letsencrypt.org/" target="_blank">Let's Encrypt</a>.</p>
+        </li>
+        <li><strong>Deshabilitar Listado de Directorios:</strong>
+            <p>Evita que los usuarios vean el contenido de los directorios si no hay un archivo índice presente.</p>
+            <div class="code-block">
+                <pre><code># En el archivo de configuración de tu sitio o en .htaccess
+Options -Indexes
+                </code></pre>
+            </div>
+        </li>
+        <li><strong>Restricción de Acceso por IP:</strong>
+            <p>Limita el acceso a ciertas rutas del servidor basándote en direcciones IP.</p>
+            <div class="code-block">
+                <pre><code># Ejemplo de restricción para la carpeta /admin
+&lt;Directory /var/www/html/admin&gt;
     Require ip 192.168.1.0/24
+    Require not ip 10.0.0.1
 &lt;/Directory&gt;
-                        </code></pre>
-                    </div>
-                </li>
-            </ol>
-        </section>
+                </code></pre>
+            </div>
+            <p>También puedes usar `Require all denied` para bloquear el acceso a recursos sensibles.</p>
+        </li>
+        <li><strong>Ocultar Versiones y Firma del Servidor:</strong>
+            <p>Oculta información sensible sobre la versión de Apache y los módulos instalados.</p>
+            <div class="code-block">
+                <pre><code># En /etc/apache2/conf-available/security.conf
+ServerTokens Prod
+ServerSignature Off
+                </code></pre>
+            </div>
+        </li>
+        <li><strong>Habilitar Seguridad Adicional con ModSecurity:</strong>
+            <p>Implementa un firewall de aplicaciones web (WAF) para mitigar ataques comunes.</p>
+            <div class="code-block">
+                <pre><code># Instala y habilita ModSecurity
+sudo apt install libapache2-mod-security2
+sudo a2enmod security2
+sudo systemctl restart apache2
+
+# Configura las reglas en /etc/modsecurity/modsecurity.conf
+SecRuleEngine On
+                </code></pre>
+            </div>
+        </li>
+        <li><strong>Proteger Archivos de Configuración:</strong>
+            <p>Evita el acceso a archivos sensibles como <code>.htaccess</code> o archivos de configuración del servidor.</p>
+            <div class="code-block">
+                <pre><code># En el archivo de configuración o en .htaccess
+&lt;FilesMatch "^\.ht"&gt;
+    Require all denied
+&lt;/FilesMatch&gt;
+                </code></pre>
+            </div>
+        </li>
+        <li><strong>Configuración de Timeouts:</strong>
+            <p>Reduce el riesgo de ataques de denegación de servicio (DoS) configurando timeouts adecuados.</p>
+            <div class="code-block">
+                <pre><code># En /etc/apache2/apache2.conf
+Timeout 60
+KeepAlive On
+MaxKeepAliveRequests 100
+KeepAliveTimeout 5
+                </code></pre>
+            </div>
+        </li>
+    </ol>
+</section>
+
 
         <!-- Conclusión -->
         <section id="conclusion" class="mt-5">
